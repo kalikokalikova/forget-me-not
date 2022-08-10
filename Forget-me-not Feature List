@@ -1,0 +1,13 @@
+Forget-me-not Camping List Generator
+
+FEATURES
+
+User will be able register and log in with validations 
+Home page -- user will see new trip form, list of upcoming trips
+List - name (r), notes, start_date (r), end_date(r), zip_code(r), created_at, update_at (editable, deletable) 
+Item - name(r), category(r dropdown options), weight, size, packed (boolean), created_at, updated_at (editable, deletable) 
+Single list view - form with checkboxes and a submit button. User confirms items with checkboxes, submit list. Then they can create and add items. 
+There will be edit/delete links next to each item on the list.
+Edit link for item takes user to item view where they can edit item, on save redirects to list view.
+All trips page.
+Bonus features: Search all trips by location, date, notes. Export/share packing list. Suggested items from REI. Account page with user attributes (home zip code, calculate distance to camp site, etc.)
