@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Home Page</title>
 </head>
 <body>
     <div class="container">
-        <h1>Dashboard</h1>
+        <h1>Home Page</h1>
         <div class="new-list-form">
             <form action="/save-list" method="post">
                 <label for="name">Trip name:</label>
@@ -31,6 +31,11 @@
         </div>
         <div class="upcoming-trips">
             Upcoming trips here...
+            <ul>
+                {% for trip in upcoming_trips %}
+                <li>{{ trip.name }}</li>
+                {% endfor %}
+            </ul>
         </div>
 
 

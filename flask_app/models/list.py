@@ -19,6 +19,21 @@ class List:
         result = connectToMySQL('camping_list_schema').query_db(query, data)
         return result
 
+    @classmethod
+    def get_upcoming_trips(cls, data):
+        query = "select * from lists where users_id = %(users_id)s and start_date > curdate();"
+        results = connectToMySQL('camping_list_schema').query_db(query, data)
+        #TODO create and return classes here
+        return results
+
+    @classmethod
+    def get_all(cls, data):
+        query = "select * from lists where users_id = %(users_id)s;"
+        results = connectToMySQL('camping_list_schema').query_db(query, data)
+        #TODO create and return classes here
+        return results
+
+
     @staticmethod
     def validate_inputs(data):
         return True
