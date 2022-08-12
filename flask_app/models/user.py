@@ -27,13 +27,13 @@ class User:
         }
 
         query = "insert into users (first_name, last_name, email, password) values ( %(first_name)s, %(last_name)s, %(email)s, %(password)s );"
-        return connectToMySQL('recipes_schema').query_db(query, data)
+        return connectToMySQL('camping_list_schema').query_db(query, data)
 
     @classmethod
     def get_all_users(cls):
         users = []
         query = "select * from users;"
-        result = connectToMySQL('recipes_schema').query_db(query)
+        result = connectToMySQL('camping_list_schema').query_db(query)
         if len(result) > 0:
             for user in result:
                 users.append( cls(user) )
@@ -42,7 +42,7 @@ class User:
     @classmethod
     def get_user_by_email(cls, data):
         query = "select * from users where email = %(email)s;"
-        result = connectToMySQL('recipes_schema').query_db(query, data)
+        result = connectToMySQL('camping_list_schema').query_db(query, data)
         if len(result) > 0:
             return cls( result[0] )
         else:
@@ -51,7 +51,7 @@ class User:
     @classmethod
     def get_user_by_id(cls, data):
         query = "select * from users where id = %(id)s;"
-        result = connectToMySQL('recipes_schema').query_db(query, data)
+        result = connectToMySQL('camping_list_schema').query_db(query, data)
         if len(result) > 0:
             return cls( result[0] )
         else:

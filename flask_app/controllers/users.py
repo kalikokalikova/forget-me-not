@@ -3,12 +3,12 @@ from flask import render_template, redirect, request, session
 from flask_app.models.user import User
 
 # Registration or Login Page
-@app.route('/reg_or_login')
-def index():
+@app.route('/register_or_login')
+def register_or_login():
     return render_template('register_or_login.html')
 
 
-# validate and save user route
+# validate and save user route POST
 @app.route('/register', methods=['post'])
 def validate_and_save_user():
     if User.validate_registration(request.form):
@@ -16,9 +16,9 @@ def validate_and_save_user():
         session['user_id'] = user_id
         return redirect('/')
     else:
-        return redirect('/reg_or_login')
+        return redirect('/register_or_login')
 
-# validate log in credentials and log in user route
+# validate log in credentials and log in user route POST
 @app.route('/login', methods=['post'])
 def login():
     user =  User.validate_login(request.form)
@@ -26,10 +26,10 @@ def login():
         session['user_id'] = user.id
         return redirect('/')
     else:
-        return redirect('/reg_or_login')
+        return redirect('/register_or_login')
 
 # log out user
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect('/reg_or_login')
+    return redirect('/register_or_login')
