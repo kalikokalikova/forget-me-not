@@ -15,6 +15,10 @@ class List:
 
     @classmethod
     def save(cls, data):
-        query = "insert into lists (name, notes, start_date, end_date, zip_code) values ( %(name)s, %(notes)s, %(start_date)s, %(end_date)s, %(zip_code)s );"
+        query = "insert into lists (name, users_id, notes, start_date, end_date, zip_code) values ( %(name)s, %(users_id)s, %(notes)s, %(start_date)s, %(end_date)s, %(zip_code)s );"
         result = connectToMySQL('camping_list_schema').query_db(query, data)
         return result
+
+    @staticmethod
+    def validate_inputs(data):
+        return True
