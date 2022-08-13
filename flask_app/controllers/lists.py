@@ -24,7 +24,6 @@ def validate_and_save_list():
         list_id = List.save(data)
         #TODO needs to associate default items with this list in the list-items table
         # list.add_default_items({'list_id': list_id})
-        # change this to create list, to make it less confusing
         return redirect(f'/edit_trip/{list_id}')
     else:
         #TODO some kind of error messaging

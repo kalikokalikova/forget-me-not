@@ -1,4 +1,5 @@
 from config.mysqlconnection import connectToMySQL
+from flask_app.models.item import Item
 from flask import flash
 
 class List:
@@ -12,12 +13,16 @@ class List:
         self.start_date = data['start_date']
         self.end_date = data['end_date']
         self.zip_code = data['zip_code']
+        self.items = []
 
     @classmethod
     def save(cls, data):
         query = "insert into lists (name, users_id, notes, start_date, end_date, zip_code) values ( %(name)s, %(users_id)s, %(notes)s, %(start_date)s, %(end_date)s, %(zip_code)s );"
-        result = connectToMySQL('camping_list_schema').query_db(query, data)
-        return result
+        list_id = connectToMySQL('camping_list_schema').query_db(query, data)
+        if list_id:
+            # create default items and attach to list
+            items = Item.create_default_items(list_id)
+        return list_id
 
     @classmethod
     def get_upcoming_trips(cls, data):
