@@ -40,7 +40,7 @@ def show_all_trip():
         return redirect('/')
 
 @app.route('/edit_trip/<id>')
-def view_trip(id):
+def edit_trip(id):
     trip = List.get_by_id({'id': id})
     if trip:
         return render_template('edit_trip.html', trip=trip)

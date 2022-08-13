@@ -8,25 +8,19 @@
 </head>
 <body>
     <h1>The trip you're looking at!</h1>
-    {{ trip.name }}
-    {{ trip.notes }}
-    {{ trip.start_date }}
-    {{ trip.end_date }}
-    {{ trip.zip_code }}
+    <div>{{ trip.name }}</div>
+    <div>{{ trip.notes }}</div>
+    <div>{{ trip.start_date }} - {{ trip.end_date }}</div>
+    <div>{{ trip.zip_code }}</div>
     
     <form action="/update-list" method="post">
 
-        <div class="sleeping-items">
-            <div>Sleeping</div>
+        {% for item in trip.items %}        
             <div>
-                <label for="sleeping">sleeping bag</label>
-                <input type="checkbox" name="sleeping-bag" checked="true">
+                <label>{{item.name}}</label>
+                <input type="checkbox" name="{{item.name}}" checked="true">
             </div>
-            <div>
-                <label for="pillow">pillow</label>
-                <input type="checkbox" name="pillow" checked="true">
-            </div>
-        </div>
+        {% endfor %}
         
         <button>Yes, confirm these items</button>
     </form>

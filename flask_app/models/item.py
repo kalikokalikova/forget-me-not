@@ -11,31 +11,11 @@ class Item:
         self.category = data['categories_id']
         self.list_id = data['lists_id']
 
-    DEFAULT_ITEMS = [ # worry about categories later
-        {
-            'name': 'sleeping bag',
-            'weight': 2.0,
-            'is_packed': 0,
-            'categories_id': 1
-        },
-        {
-            'name': 'pillow',
-            'weight': 1,
-            'is_packed': 0,
-            'categories_id': 1
-        },
-        {
-            'name': 'socks',
-            'weight': .5,
-            'is_packed': 0,
-            'categories_id': 1
-        },
-        {
-            'name': 'gin',
-            'weight': .25,
-            'is_packed': 0,
-            'categories_id': 1
-        }
+    DEFAULT_ITEMS = [
+        { 'name': 'sleeping bag', 'weight': 2.0, 'is_packed': 0, 'categories_id': 2 },
+        { 'name': 'pillow', 'weight': 1, 'is_packed': 0, 'categories_id': 2 },
+        { 'name': 'socks', 'weight': .5, 'is_packed': 0, 'categories_id': 3 },
+        { 'name': 'gin', 'weight': .25, 'is_packed': 0, 'categories_id': 7 }
     ]
 
     @classmethod
@@ -53,8 +33,9 @@ class Item:
     @classmethod
     def create_default_items(cls, list_id):
         item_ids = []
-        for di in cls.DEFAULT_ITEMS:
-            di['lists_id'] = list_id
-            item_id = Item.save(di)
+        for default_item in cls.DEFAULT_ITEMS:
+            default_item['lists_id'] = list_id
+            item_id = Item.save(default_item)
             item_ids.append(item_id)
+        #TODO there should be some kind of database exception checking here, return true or false. For now, just returning list of ids because that might be useful?
         return item_ids

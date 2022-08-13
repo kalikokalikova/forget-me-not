@@ -40,10 +40,26 @@ class List:
 
     @classmethod
     def get_by_id(cls, data):
-        query = "select * from lists where id=%(id)s;"
+        query = "select * from lists left join items on items.lists_id = lists.id where lists.id=%(id)s;"
         results = connectToMySQL('camping_list_schema').query_db(query, data)
-        #TODO create and return classes here
-        return results[0]
+        list = cls(results[0])
+        items = []
+        #TODO is the right way to do this? HALP I don't know
+        for result in results:
+            item_data = { 
+                'id': ['items.id'],
+                'name': result['items.name'],
+                'created_at': result['items.created_at'],
+                'updated_at': result['updated_at'],
+                'lists_id': result['lists_id'],
+                'weight': result['weight'],
+                'is_packed': result['is_packed'],
+                'categories_id': result['categories_id'] }
+            item = Item(item_data)
+            items.append(item)
+        list.items = items
+        print(list.items)
+        return list
 
     @staticmethod
     def validate_inputs(data):
