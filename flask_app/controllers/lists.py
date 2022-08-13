@@ -22,8 +22,6 @@ def validate_and_save_list():
             'zip_code': request.form['zip_code']
             }
         list_id = List.save(data)
-        #TODO needs to associate default items with this list in the list-items table
-        # list.add_default_items({'list_id': list_id})
         return redirect(f'/edit_trip/{list_id}')
     else:
         #TODO some kind of error messaging
@@ -46,3 +44,14 @@ def edit_trip(id):
         return render_template('edit_trip.html', trip=trip)
     else:
         return redirect('/')
+
+@app.route('/update_list', methods=['post'])
+def update_list():
+    #TODO this does not edit anything yet
+    print(request.form)
+    return redirect(f'/view_trip/{request.form["list_id"]}')
+
+@app.route('/view_trip/<id>')
+def view_trip(id):
+    trip = List.get_by_id({ 'id': id })
+    return render_template('view_trip.html', trip=trip)

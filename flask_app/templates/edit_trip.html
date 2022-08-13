@@ -13,11 +13,12 @@
     <div>{{ trip.start_date }} - {{ trip.end_date }}</div>
     <div>{{ trip.zip_code }}</div>
     
-    <form action="/update-list" method="post">
+    <form action="/update_list" method="post">
+        <input type="hidden" name="list_id" value="{{ trip.id }}">
 
         {% for item in trip.items %}        
             <div>
-                <label>{{item.name}}</label>
+                <label>{{ item.name }}</label>
                 <input type="checkbox" name="{{item.name}}" checked="true">
             </div>
         {% endfor %}

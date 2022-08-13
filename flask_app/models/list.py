@@ -40,11 +40,14 @@ class List:
 
     @classmethod
     def get_by_id(cls, data):
+        # query with join to get all the items associated with this list
         query = "select * from lists left join items on items.lists_id = lists.id where lists.id=%(id)s;"
         results = connectToMySQL('camping_list_schema').query_db(query, data)
+        # create class instance of List
         list = cls(results[0])
         items = []
         #TODO is the right way to do this? HALP I don't know
+        # looping through query results, for each record (which corresponds to an item), create a dictionary, use that dictionary to create an Item instance, append them all to a list and attach that list to the List
         for result in results:
             item_data = { 
                 'id': ['items.id'],
@@ -58,7 +61,6 @@ class List:
             item = Item(item_data)
             items.append(item)
         list.items = items
-        print(list.items)
         return list
 
     @staticmethod

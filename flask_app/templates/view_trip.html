@@ -7,8 +7,46 @@
     <title>View Trip</title>
 </head>
 <body>
-    <h1>The trip you're looking at!</h1>
-    {{ trip.name }}
+    <h1>{{ trip.name }}</h1>
+
+    Info about trip goes here.
+    {% for item in trip.items %}
+        <div>{{item.name}}</div>
+    {% endfor %}
+
+    <div>
+        Create and add a custom item to this list
+        <form action="/add_item" method="post">
+            <div>
+                <label for="name">Item Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="name">Category:</label>
+                <select name="categories_id">
+                    <option value="1">Miscellaneous</option>
+                    <option value="2">Sleeping</option>
+                    <option value="3">Personal Care</option>
+                    <option value="4">Tools</option>
+                    <option value="5">Fire</option>
+                    <option value="6">Recreation</option>
+                    <option value="7">Eating/Drinking</option>
+                    <option value="8">Kids</option>
+                    <option value="9">Pets</option>
+                  </select>
+            </div>
+            <div>
+                <label for="name">Weight:</label>
+                <input type="text" name="weight">
+            </div>
+            <div>
+                <label for="name">Is Packed?:</label>
+                <input type="checkbox" name="is_packed">
+            </div>
+            <button>Add</button>
+        </form>
+
+    </div>
     
 </body>
 </html>
