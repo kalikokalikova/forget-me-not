@@ -12,7 +12,6 @@ def index():
 # validate and save list route POST
 @app.route('/save-list', methods=['post'])
 def validate_and_save_list():
-    # We need to send the user id with this
     if List.validate_inputs(request.form):
         data = {
             'users_id': session['user_id'],
@@ -22,16 +21,26 @@ def validate_and_save_list():
             'end_date': request.form['end_date'],
             'zip_code': request.form['zip_code']
             }
-        List.save(data)
-        return redirect('/new-lists')
+        list = List.save(data)
+        return redirect(f'/edit_trip/{list}')
     else:
+        #TODO some kind of error messaging
         return redirect('/')
 
 @app.route('/trips')
 def show_all_trip():
     data = { 'users_id': session['user_id'] }
+    #TODO get trips in order of when they start
     lists = List.get_all(data)
     if lists:
         return render_template('all_trips.html', all_trips=lists)
+    else:
+        return redirect('/')
+
+@app.route('/edit_trip/<id>')
+def view_trip(id):
+    trip = List.get_by_id({'id': id})
+    if trip:
+        return render_template('edit_trip.html', trip=trip)
     else:
         return redirect('/')

@@ -33,6 +33,14 @@ class List:
         #TODO create and return classes here
         return results
 
+    @classmethod
+    def get_by_id(cls, data):
+        query = "select * from lists where id=%(id)s;"
+        results = connectToMySQL('camping_list_schema').query_db(query, data)
+        #TODO create and return classes here
+        return results[0]
+
     @staticmethod
     def validate_inputs(data):
+        #TODO think about and write this code
         return True

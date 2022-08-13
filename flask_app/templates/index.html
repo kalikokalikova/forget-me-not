@@ -7,40 +7,36 @@
     <title>Home Page</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Home Page</h1>
-        <div class="new-list-form">
-            <form action="/save-list" method="post">
-                <label for="name">Trip name:</label>
-                <input type="text" name="name">
+    <h1>Home Page</h1>
+    <div class="new-list-form">
+        <form action="/save-list" method="post">
+            <label for="name">Trip name:</label>
+            <input type="text" name="name">
 
-                <label for="notes">Notes:</label>
-                <input type="text" name="notes" id="">
+            <label for="notes">Notes:</label>
+            <input type="text" name="notes" id="">
 
-                <label for="start-date">Start Date:</label>
-                <input type="date" name="start_date">
+            <label for="start-date">Start Date:</label>
+            <input type="date" name="start_date">
 
-                <label for="end-date">End Date:</label>
-                <input type="date" name="end_date">
+            <label for="end-date">End Date:</label>
+            <input type="date" name="end_date">
 
-                <label for="zip-code">Zip code of camping location</label>
-                <input type="text" name="zip_code">
+            <label for="zip-code">Zip code of camping location</label>
+            <input type="text" name="zip_code">
 
-                <button>Save Trip</button>
-            </form>
-        </div>
-        <div class="upcoming-trips">
-            Upcoming trips here...
-            <ul>
-                {% for trip in upcoming_trips %}
-                <li><a href="/trip/{{trip.id}}">{{trip.name}}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <a href="/trips">See All Trips</a>
-
-
+            <button>Save Trip</button>
+        </form>
     </div>
+    <div class="upcoming-trips">
+        Upcoming trips here...
+        <ul>
+            {% for trip in upcoming_trips %}
+            <li><a href="/trip/{{trip.id}}">{{trip.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="/trips">See All Trips</a>
     
 </body>
 </html>

@@ -8,65 +8,56 @@
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to THE APP</h1>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+    <h1>Welcome to THE APP</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
-        <div class="register">
-            <h3>Register</h3>
-            <form action="/register" method="post">
-
-                <div>
-                    <label for="first_name">First Name:</label>
-                    <input type="text" name="first_name">
-                </div>
-                <div>
-                    <label for="last_name">Last Name:</label>
-                    <input type="text" name="last_name">
-                </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="text" name="email">
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password">
-                </div>
-                <div>
-                    <label for="confirm">Confirm Password</label>
-                    <input type="password" name="confirm">
-                </div>
-                <div>
-                    <button>Register</button>
-                </div>
-
-            </form>
+    <h3>Register</h3>
+    <form action="/register" method="post">
+        <div>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name">
         </div>
-
-        <div class="login">
-            <h3>Log In</h3>
-            <form action="/login" method="post">
-
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="text" name="email">
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password">
-                </div>
-                <div>
-                    <button>Log In</button>
-                </div>
-
-            </form>
+        <div>
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name">
         </div>
-    </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" name="email">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <label for="confirm">Confirm Password</label>
+            <input type="password" name="confirm">
+        </div>
+        <div>
+            <button>Register</button>
+        </div>
+    </form>
+
+    <h3>Log In</h3>
+    <form action="/login" method="post">
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" name="email">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <button>Log In</button>
+        </div>
+    </form>
+    
 </body>
 </html>
