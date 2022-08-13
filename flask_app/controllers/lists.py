@@ -23,16 +23,15 @@ def validate_and_save_list():
             'zip_code': request.form['zip_code']
             }
         List.save(data)
-        return redirect('/all-lists')
+        return redirect('/new-lists')
     else:
         return redirect('/')
 
-@app.route('/all-lists')
-def all_lists():
-    print("we wade it")
-    return redirect('/')
-    # lists = List.get_all()
-    # if lists:
-    #     return render_template('all_lists.html')
-    # else:
-    #     return redirect('/')
+@app.route('/trips')
+def show_all_trip():
+    data = { 'users_id': session['user_id'] }
+    lists = List.get_all(data)
+    if lists:
+        return render_template('all_trips.html', all_trips=lists)
+    else:
+        return redirect('/')

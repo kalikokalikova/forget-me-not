@@ -33,7 +33,6 @@ class List:
         #TODO create and return classes here
         return results
 
-
     @staticmethod
     def validate_inputs(data):
         return True

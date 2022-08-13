@@ -33,10 +33,11 @@
             Upcoming trips here...
             <ul>
                 {% for trip in upcoming_trips %}
-                <li>{{ trip.name }}</li>
+                <li><a href="/trip/{{trip.id}}">{{trip.name}}</a></li>
                 {% endfor %}
             </ul>
         </div>
+        <a href="/trips">See All Trips</a>
 
 
     </div>
