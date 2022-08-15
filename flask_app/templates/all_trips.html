@@ -10,7 +10,7 @@
     <h1>All Trips of All Time Here</h1>
     <ul>
         {% for trip in all_trips %}
-            <li><a href="/trip/{{trip.id}}">{{trip.name}}</a><sp>{{trip.start_date.strftime("%m/%d/%Y")}}-{{trip.end_date.strftime("%m/%d/%Y")}}</sp></li>
+            <li><a href="/view_trip/{{trip.id}}">{{trip.name}}</a><sp>{{trip.start_date.strftime("%m/%d/%Y")}}-{{trip.end_date.strftime("%m/%d/%Y")}}</sp></li>
         {% endfor %}
     </ul>
     

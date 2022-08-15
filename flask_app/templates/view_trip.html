@@ -17,6 +17,7 @@
     <div>
         Create and add a custom item to this list
         <form action="/add_item" method="post">
+            <input type="hidden" name="lists_id" value="{{ trip.id }}">
             <div>
                 <label for="name">Item Name:</label>
                 <input type="text" name="name">
@@ -33,7 +34,7 @@
                     <option value="7">Eating/Drinking</option>
                     <option value="8">Kids</option>
                     <option value="9">Pets</option>
-                  </select>
+                </select>
             </div>
             <div>
                 <label for="name">Weight:</label>
@@ -41,7 +42,8 @@
             </div>
             <div>
                 <label for="name">Is Packed?:</label>
-                <input type="checkbox" name="is_packed">
+                <input type = "hidden" name = "is_packed" value = "0">
+                <input type="checkbox" name="is_packed" value = "1">
             </div>
             <button>Add</button>
         </form>
