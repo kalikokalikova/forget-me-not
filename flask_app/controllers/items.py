@@ -8,3 +8,5 @@ from flask_app.models.item import Item
 #     data = { 'users_id': session['user_id'] }
 #     upcoming_trips = List.get_upcoming_trips(data)
 #     return render_template('index.html', upcoming_trips=upcoming_trips)
+
+#route to add custom item to list
