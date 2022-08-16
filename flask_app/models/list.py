@@ -58,8 +58,6 @@ class List:
         # create class instance of List
         list = cls(results[0])
         items = []
-        #TODO is the right way to do this? HALP I don't know
-        # looping through query results, for each record (which corresponds to an item), create a dictionary, use that dictionary to create an Item instance, append them all to a list and attach that list to the List
         for result in results:
             item_data = { 
                 'id': result['items.id'],
