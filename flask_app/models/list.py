@@ -77,5 +77,11 @@ class List:
 
     @staticmethod
     def validate_inputs(data):
-        #TODO think about and write this code
-        return True
+        is_valid = True
+        if len(data['name']) < 2:
+            is_valid = False
+            flash("Trip name must be at least 2 characters.")
+        if data['start_date'] > data['end_date']:
+            is_valid = False
+            flash("Start date must be before end date.")
+        return is_valid

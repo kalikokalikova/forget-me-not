@@ -10,7 +10,7 @@
     <h1>The trip you're looking at!</h1>
     <div>{{ trip.name }}</div>
     <div>{{ trip.notes }}</div>
-    <div>{{ trip.start_date }} - {{ trip.end_date }}</div>
+    <div>{{ trip.start_date.strftime("%m/%d/%Y") }} - {{ trip.end_date.strftime("%m/%d/%Y") }}</div>
     <div>{{ trip.zip_code }}</div>
     
     <form action="/update_list" method="post">
