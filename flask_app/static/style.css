@@ -1,0 +1,36 @@
+* {
+    margin: 0 auto;
+    padding: 0px;
+}
+
+
+body {
+    background-image: url("background.jpg");
+    background-size:cover;
+    height: 100vh;
+    /* background-position: center; */
+}
+
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    border-radius: 15px;
+    background-color: rgb(179, 179, 179, 0.75);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.main-content {
+    display: flex;
+    margin-top: 20px;
+}
+
+.right {
+
+}

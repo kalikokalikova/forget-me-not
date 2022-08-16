@@ -5,8 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+        font-family: 'Nanum Gothic Coding', monospace;
+        }
+    </style>
 </head>
 <body>
+<<<<<<< HEAD
+    <div class="container p-5">
+        <div class="header">
+            <h1>Home Page</h1>
+            <ul class="nav nav-pills">
+                <li class="nav-item ml-1"><a class="nav-link active" href="/trips">See All Trips</a></li>
+                <li class="nav-item ml-1"><a class="nav-link active" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+            <div class="new-list-form">
+                <form action="/save-list" method="post">
+                    <label class="form-label" for="name">Trip name:</label>
+                <input class="form-control" type="text" name="name">
+                
+                <label class="form-label" for="notes">Notes:</label>
+                <input class="form-control" type="text" name="notes" id="">
+                
+                <label class="form-label" for="start-date">Start Date:</label>
+                <input class="form-control" type="date" name="start_date">
+                
+                <label class="form-label" for="end-date">End Date:</label>
+                <input class="form-control" type="date" name="end_date">
+                
+                <label class="form-label" for="zip-code">Zip code of camping location</label>
+                <input class="form-control" type="text" name="zip_code">
+                
+                <button class="btn btn-primary mt-3">Save Trip</button>
+            </form>
+        </div>
+        <div class="upcoming-trips">
+            Upcoming trips here...
+            <ul>
+                {% for trip in upcoming_trips %}
+                <li><a href="/trip/{{trip.id}}">{{trip.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+=======
     <h1>Home Page</h1>
     <div class="new-list-form">
         <form action="/save-list" method="post">
@@ -45,5 +92,6 @@
     </div>
     <a href="/trips">See All Trips</a>
     
+>>>>>>> 11f0d247bf1e4bc82f4316e8179d961354b424df
 </body>
 </html>
