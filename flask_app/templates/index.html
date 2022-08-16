@@ -15,7 +15,6 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
     <div class="container p-5">
         <div class="header">
             <h1>Home Page</h1>
@@ -53,45 +52,5 @@
             </ul>
         </div>
     </div>
-=======
-    <h1>Home Page</h1>
-    <div class="new-list-form">
-        <form action="/save-list" method="post">
-            <label for="name">Trip name:</label>
-            <input type="text" name="name">
-
-            <label for="notes">Notes:</label>
-            <input type="text" name="notes" id="">
-
-            <label for="start-date">Start Date:</label>
-            <input type="date" name="start_date">
-
-            <label for="end-date">End Date:</label>
-            <input type="date" name="end_date">
-
-            <label for="zip-code">Zip code of camping location</label>
-            <input type="text" name="zip_code">
-
-            <button>Save Trip</button>
-        </form>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </div>
-    <div class="upcoming-trips">
-        Upcoming trips here...
-        <ul>
-            {% for trip in upcoming_trips %}
-            <li><a href="/view_trip/{{trip.id}}">{{trip.name}}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    <a href="/trips">See All Trips</a>
-    
->>>>>>> 11f0d247bf1e4bc82f4316e8179d961354b424df
 </body>
 </html>
