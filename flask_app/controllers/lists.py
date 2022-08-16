@@ -24,13 +24,12 @@ def validate_and_save_list():
         list_id = List.save(data)
         return redirect(f'/edit_trip/{list_id}')
     else:
-        #TODO some kind of error messaging
+        #get flashed messages from HTML
         return redirect('/')
 
 @app.route('/trips')
 def show_all_trip():
     data = { 'users_id': session['user_id'] }
-    #TODO get trips in order of when they start
     lists = List.get_all(data)
     if lists:
         return render_template('all_trips.html', all_trips=lists)

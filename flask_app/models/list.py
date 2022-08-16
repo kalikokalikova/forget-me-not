@@ -39,7 +39,7 @@ class List:
 
     @classmethod
     def get_all(cls, data):
-        query = "select * from lists where users_id = %(users_id)s;"
+        query = "select * from lists where users_id = %(users_id)s order by start_date desc;"
         results = connectToMySQL('camping_list_schema').query_db(query, data)
         if len(results) == 0:
             return []
