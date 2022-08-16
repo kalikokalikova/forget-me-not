@@ -39,7 +39,7 @@
         Upcoming trips here...
         <ul>
             {% for trip in upcoming_trips %}
-            <li><a href="/trip/{{trip.id}}">{{trip.name}}</a></li>
+            <li><a href="/view_trip/{{trip.id}}">{{trip.name}}</a></li>
             {% endfor %}
         </ul>
     </div>

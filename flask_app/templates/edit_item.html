@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+</head>
+<body>
+    <form action="/edit_item_in_db" method="post">
+        <div>
+            <input type = "hidden" value = "{{item.list_id}}" name = "lists_id">
+            <input type = "hidden" value = "{{item.id}}" name = "items_id">
+            <label for="name">Item Name:</label>
+            <input type="text" name="name" value = "{{item.name}}">
+        </div>
+        <div>
+            <label for="name">Category:</label>
+            <select name="categories_id">
+                <option value="{{item.categories_id}}">{{item.category_name}}</option>
+                <option value="1">Miscellaneous</option>
+                <option value="2">Sleeping</option>
+                <option value="3">Personal Care</option>
+                <option value="4">Tools</option>
+                <option value="5">Fire</option>
+                <option value="6">Recreation</option>
+                <option value="7">Eating/Drinking</option>
+                <option value="8">Kids</option>
+                <option value="9">Pets</option>
+            </select>
+        </div>
+        <div>
+            <label for="weight">Weight:</label>
+            <input type="text" name="weight" value = "{{item.weight}}">
+        </div>
+        <div>
+            <p>Item packed?</p>
+            <input type="radio" id="packed" name="is_packed" value="1">
+            <label for="packed">Yes</label><br>
+            <input type="radio" id="not_packed" name="is_packed" value="0" checked>
+            <label for="not_packed">No</label><br>
+        </div>
+        <button>Make the change!</button>
+    </form>
+</body>
+</html>

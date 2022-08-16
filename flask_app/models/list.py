@@ -62,7 +62,7 @@ class List:
         # looping through query results, for each record (which corresponds to an item), create a dictionary, use that dictionary to create an Item instance, append them all to a list and attach that list to the List
         for result in results:
             item_data = { 
-                'id': ['items.id'],
+                'id': result['items.id'],
                 'name': result['items.name'],
                 'created_at': result['items.created_at'],
                 'updated_at': result['updated_at'],

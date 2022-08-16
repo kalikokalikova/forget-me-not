@@ -9,9 +9,13 @@
 <body>
     <h1>{{ trip.name }}</h1>
 
-    Info about trip goes here.
+    <div>{{ trip.name }}</div>
+    <div>{{ trip.notes }}</div>
+    <div>{{ trip.start_date.strftime("%m/%d/%Y") }} - {{ trip.end_date.strftime("%m/%d/%Y") }}</div>
+    <div>{{ trip.zip_code }}</div>
+
     {% for item in trip.items %}
-        <div>{{item.name}}</div>
+        <div><a href = "/edit_item/{{item.id}}">{{item.name}}</a></div>
     {% endfor %}
 
     <div>
@@ -41,9 +45,11 @@
                 <input type="text" name="weight">
             </div>
             <div>
-                <label for="name">Is Packed?:</label>
-                <input type = "hidden" name = "is_packed" value = "0">
-                <input type="checkbox" name="is_packed" value = "1">
+                <p>Item packed?</p>
+                <input type="radio" id="packed" name="is_packed" value="1">
+                <label for="packed">Yes</label><br>
+                <input type="radio" id="not_packed" name="is_packed" value="0">
+                <label for="not_packed">No</label><br>
             </div>
             <button>Add</button>
         </form>

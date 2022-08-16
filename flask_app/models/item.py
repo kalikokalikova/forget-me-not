@@ -8,7 +8,8 @@ class Item:
         self.updated_at = data['updated_at']
         self.weight = data['weight']
         self.is_packed = data['is_packed']
-        self.category = data['categories_id']
+        self.categories_id = data['categories_id']
+        self.category_name = None
         self.list_id = data['lists_id']
 
     DEFAULT_ITEMS = [
@@ -130,3 +131,16 @@ class Item:
             item_ids.append(item_id)
         #TODO there should be some kind of database exception checking here, return true or false. For now, just returning list of ids because that might be useful?
         return item_ids
+
+    @classmethod
+    def get_item_by_id(cls, data):
+        query = "select * from items LEFT JOIN categories ON items.categories_id = categories.id where items.id=%(items_id)s;"
+        results = connectToMySQL('camping_list_schema').query_db(query, data)
+        this_item_object = cls(results[0])
+        this_item_object.category_name = results[0]["categories.name"]
+        return this_item_object
+    
+    @classmethod
+    def edit_item_in_db(cls, data):
+        query = "UPDATE items SET name = %(name)s, weight = %(weight)s, is_packed = %(is_packed)s, categories_id = %(categories_id)s WHERE items.id = %(items_id)s;"
+        return connectToMySQL('camping_list_schema').query_db(query, data)
