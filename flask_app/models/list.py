@@ -57,21 +57,28 @@ class List:
         results = connectToMySQL('camping_list_schema').query_db(query, data)
         # create class instance of List
         list = cls(results[0])
-        items = []
-        for result in results:
-            item_data = { 
-                'id': result['items.id'],
-                'name': result['items.name'],
-                'created_at': result['items.created_at'],
-                'updated_at': result['updated_at'],
-                'lists_id': result['lists_id'],
-                'weight': result['weight'],
-                'is_packed': result['is_packed'],
-                'categories_id': result['categories_id'] }
-            item = Item(item_data)
-            items.append(item)
-        list.items = items
-        return list
+        if results[0]['items.id'] == None: # List has no items
+            return list # Return list where items is an empty list
+        else: # Create list of items and append to List instance
+            items = []
+            for result in results:
+                item_data = { 
+                    'id': result['items.id'],
+                    'name': result['items.name'],
+                    'created_at': result['items.created_at'],
+                    'updated_at': result['updated_at'],
+                    'lists_id': result['lists_id'],
+                    'weight': result['weight'],
+                    'is_packed': result['is_packed'],
+                    'categories_id': result['categories_id'] }
+                item = Item(item_data)
+                items.append(item)
+            list.items = items
+            return list # Return a List instance with array of items attached
+
+    @classmethod
+    def update_list(cls, danta):
+        pass
 
     @staticmethod
     def validate_inputs(data):

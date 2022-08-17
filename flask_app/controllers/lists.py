@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models.list import List
+from flask_app.models.item import Item
 
 
 @app.route('/')
@@ -39,10 +40,13 @@ def show_all_trip():
 @app.route('/edit_trip/<id>')
 def edit_trip(id):
     trip = List.get_by_id({'id': id})
-    if trip:
-        return render_template('edit_trip.html', trip=trip)
-    else:
-        return redirect('/')
+    
+    if not trip: # if trip doesn't exist, db error, etc
+        return redirect('/') # redirect to home with TODO error messaging
+    if len(trip.items) == 0: # if trip has no items
+        trip.items = Item.create_default_items( {'list_id': trip.id} )
+    # implied else: trip has items associated in database
+    return render_template('edit_trip.html', trip=trip)
 
 @app.route('/update_list', methods=['post'])
 def update_list():
