@@ -13,19 +13,10 @@
         font-family: 'Nanum Gothic Coding', monospace;
         }
     </style>
-    <!-- <div
-    class="bg-image"
-    style="
-    background-image: url('background.jpg');
-    height: 100vh;
-    "
-    ></div> -->
 </head>
 <body>
-    <div class="container p-5">
-        <div class="nav">
-            <h1>Forget-Me-Not</h1>
-        </div>
+    <div class="container p-2">
+        <h1 class="reg-header">Forget-Me-Not</h1>
             {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
@@ -78,9 +69,8 @@
                         <button class="btn btn-primary">Log In</button>
                     </div>
                 </form>
-                
             </div>
         </div>
-        </div>
+    </div>
     </body>
     </html>

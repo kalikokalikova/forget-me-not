@@ -15,14 +15,15 @@
     </style>
 </head>
 <body>
-    <div class="container p-5">
-        <div class="header">
-            <h1>Home Page</h1>
-            <ul class="nav nav-pills">
-                <li class="nav-item ml-1"><a class="nav-link active" href="/trips">See All Trips</a></li>
-                <li class="nav-item ml-1"><a class="nav-link active" href="/logout">Logout</a></li>
-            </ul>
-        </div>
+    <div class="container p-2">
+        <div class="left">
+            <div class="header">
+                <h1>Home Page</h1>
+                <ul class="nav nav-pills">
+                    <li class="nav-item m-2"><a class="nav-link active" href="/trips">See All Trips</a></li>
+                    <li class="nav-item m-2"><a class="nav-link active" href="/logout">Logout</a></li>
+                </ul>
+            </div>
             <div class="new-list-form">
                 <form action="/save-list" method="post">
                     <label class="form-label" for="name">Trip name:</label>
@@ -41,16 +42,16 @@
                 <input class="form-control" type="text" name="zip_code">
                 
                 <button class="btn btn-primary mt-3">Save Trip</button>
-            </form>
+                </form>
+            </div>
         </div>
-        <div class="upcoming-trips">
-            Upcoming trips here...
-            <ul>
-                {% for trip in upcoming_trips %}
-                <li><a href="/trip/{{trip.id}}">{{trip.name}}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
+    <div class="right">
+        <h1 class="header">Upcoming Trips</h1>
+        <ul class="trips">
+            {% for trip in upcoming_trips %}
+            <li><a href="/view_trip/{{trip.id}}">{{trip.name}}</a></li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>

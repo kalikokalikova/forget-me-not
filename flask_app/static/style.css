@@ -13,16 +13,24 @@ body {
 
 
 .container {
-    width: 1200px;
-    margin: 0 auto;
+    /* width: 1200px; */
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
     border-radius: 15px;
-    background-color: rgb(179, 179, 179, 0.75);
+    background-color: rgb(179, 179, 179, 0.80);
+}
+
+.reg-header {
+    display: block;
 }
 
 .header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
 }
 
 
@@ -32,5 +40,20 @@ body {
 }
 
 .right {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 20px;
+}
 
+.left {
+    width: 500px;
+    padding: 20px;
+}
+
+.trips li {
+    list-style: none;
+    font-size: larger;
+    text-align: center;
+    padding: 5px;
 }
