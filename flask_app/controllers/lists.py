@@ -5,6 +5,8 @@ from flask_app.models.list import List
 
 @app.route('/')
 def index():
+    if "user_id" not in session: 
+        return redirect ("/register_or_login")
     data = { 'users_id': session['user_id'] }
     upcoming_trips = List.get_upcoming_trips(data)
     return render_template('index.html', upcoming_trips=upcoming_trips)
@@ -29,6 +31,8 @@ def validate_and_save_list():
 
 @app.route('/trips')
 def show_all_trip():
+    if "user_id" not in session: 
+        return redirect ("/register_or_login")
     data = { 'users_id': session['user_id'] }
     lists = List.get_all(data)
     if lists:
@@ -38,6 +42,8 @@ def show_all_trip():
 
 @app.route('/edit_trip/<id>')
 def edit_trip(id):
+    if "user_id" not in session: 
+        return redirect ("/register_or_login")
     trip = List.get_by_id({'id': id})
     if trip:
         return render_template('edit_trip.html', trip=trip)
@@ -52,11 +58,15 @@ def update_list():
 
 @app.route('/view_trip/<id>')
 def view_trip(id):
+    if "user_id" not in session: 
+        return redirect ("/register_or_login")
     trip = List.get_by_id({ 'id': id })
     return render_template('view_trip.html', trip=trip)
 
 @app.route('/delete_trip/<int:id>')
 def delete_trip(id):
+    if "user_id" not in session: 
+        return redirect ("/register_or_login")
     data = {
         "id" : id
     }

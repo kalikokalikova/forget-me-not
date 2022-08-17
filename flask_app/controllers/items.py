@@ -18,6 +18,8 @@ def add_item_to_db():
 #routes to page to edit individual item
 @app.route("/edit_item/<int:id>")
 def edit_item(id):
+    if "user_id" not in session: 
+        return redirect ("/register_or_login")
     data = {
         'items_id' : id
     }
@@ -41,6 +43,8 @@ def edit_item_in_db():
 #delete item in db
 @app.route("/delete_item/<int:item_id>/<int:lists_id>")
 def delete_item(item_id, lists_id):
+    if "user_id" not in session: 
+        return redirect ("/register_or_login")
     data = {
         "items_id" : item_id,
         "lists_id" : lists_id
