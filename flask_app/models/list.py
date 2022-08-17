@@ -83,3 +83,8 @@ class List:
             is_valid = False
             flash("Start date must be before end date.")
         return is_valid
+    
+    @classmethod
+    def delete_list(cls, data):
+        query = "DELETE FROM lists WHERE id = %(id)s;"
+        return connectToMySQL('camping_list_schema').query_db(query, data)

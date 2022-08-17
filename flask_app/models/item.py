@@ -144,3 +144,8 @@ class Item:
     def edit_item_in_db(cls, data):
         query = "UPDATE items SET name = %(name)s, weight = %(weight)s, is_packed = %(is_packed)s, categories_id = %(categories_id)s WHERE items.id = %(items_id)s;"
         return connectToMySQL('camping_list_schema').query_db(query, data)
+
+    @classmethod
+    def delete_item(cls, data):
+        query = "DELETE FROM items WHERE id = %(items_id)s;"
+        return connectToMySQL('camping_list_schema').query_db(query, data)

@@ -54,3 +54,11 @@ def update_list():
 def view_trip(id):
     trip = List.get_by_id({ 'id': id })
     return render_template('view_trip.html', trip=trip)
+
+@app.route('/delete_trip/<int:id>')
+def delete_trip(id):
+    data = {
+        "id" : id
+    }
+    List.delete_list(data)
+    return redirect("/trips")

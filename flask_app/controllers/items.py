@@ -37,3 +37,14 @@ def edit_item_in_db():
     list_id = data['lists_id']
     Item.edit_item_in_db(data)
     return redirect(f"/view_trip/{list_id}")
+
+#delete item in db
+@app.route("/delete_item/<int:item_id>/<int:lists_id>")
+def delete_item(item_id, lists_id):
+    data = {
+        "items_id" : item_id,
+        "lists_id" : lists_id
+    }
+    list_id = data['lists_id']
+    Item.delete_item(data)
+    return redirect(f"/view_trip/{list_id}")
