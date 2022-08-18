@@ -121,17 +121,6 @@ class Item:
         query = "select * where lists_id = %(lists_id)s;"
         result = connectToMySQL('camping_list_schema').query_db(query, data)
         return result
-    
-    # @classmethod
-    # def get_all_items_with_categories(cls, data):
-    #     query = "SELECT * FROM items LEFT JOIN categories ON items.categories_id = categories.id WHERE lists_id = %(lists_id)s ORDER BY categories.name ASC;"
-    #     results = connectToMySQL('camping_list_schema').query_db(query, data)
-    #     item_list = []
-    #     for this_item_dictionary in results:
-    #         this_item_object = cls(this_item_dictionary)
-    #         this_item_object.category_name = this_item_dictionary["categories.name"]
-    #         item_list.append(this_item_object)
-    #     return item_list
 
     @classmethod
     def create_default_items(cls, list_id):
