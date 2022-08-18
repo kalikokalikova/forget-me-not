@@ -28,7 +28,7 @@
                 <li>
                     <a href="/view_trip/{{trip.id}}">{{trip.name}}</a>: <sp>{{trip.start_date.strftime("%m/%d/%Y")}} - {{trip.end_date.strftime("%m/%d/%Y")}}</sp>
                     <div class="trip-actions">
-                        <a class="btn btn-primary btn-sm" href="/edit_trip/<id>">Edit Trip</a>
+                        <a class="btn btn-primary btn-sm" href="/edit_trip/{{trip.id}}">Edit Trip</a>
                         <a class="btn btn-primary btn-sm" href="/delete_trip/{{trip.id}}">Delete Trip</a>
                     </div>
                 </li>

@@ -13,7 +13,7 @@ class List:
         self.start_date = data['start_date']
         self.end_date = data['end_date']
         self.zip_code = data['zip_code']
-        self.items = []
+        self.items = {}
 
     @classmethod
     def save(cls, data):
@@ -57,7 +57,7 @@ class List:
         results = connectToMySQL('camping_list_schema').query_db(query, data)
         # create class instance of List
         list = cls(results[0])
-        items = []
+        items = {'eating/drinking': [], 'fire' : [], 'kids' : [], 'miscellaneous': [], 'personal_care' : [], 'pets' : [], 'recreation': [], 'sleeping' : [], 'tools' : []}
         for result in results:
             item_data = { 
                 'id': result['items.id'],
@@ -71,7 +71,9 @@ class List:
                 }
             item = Item(item_data)
             item.category_name = result['categories.name']
-            items.append(item)
+            for this_key_name in items:
+                if item.category_name == this_key_name:
+                    items[this_key_name].append(item)
         list.items = items
         return list
 

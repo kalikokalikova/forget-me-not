@@ -23,7 +23,7 @@
                     <a class="nav-link active" href="/trips">See All Trips</a>
                 </li>
                 <li class="nav-item m-2">
-                    <a class="nav-link active" href="/edit_trip/<id>">Edit Trip</a>
+                    <a class="nav-link active" href="/edit_trip/{{trip.id}}">Edit Trip</a>
                 </li>
                 <li class="nav-item m-2">
                     <a class="nav-link active" href="/delete_trip/{{trip.id}}">Delete Trip</a>
@@ -42,10 +42,14 @@
             <p>Dates: {{ trip.start_date.strftime("%m/%d/%Y") }} - {{ trip.end_date.strftime("%m/%d/%Y") }}</p>
             <p>Zip Code: {{ trip.zip_code }}</p>
         </div>
-
         <div class="items-in-list">
-        {% for item in trip.items %}
-                <a href = "/edit_item/{{item.id}}">{{item.name}}{{item.category_name}}</a>
+        {% for this_key in trip.items %}
+            <div style = "border: 2px solid black; margin: 3px;">
+                <h3>{{this_key}}</h3>
+                {% for this_item in trip.items[this_key]%}
+                    <a href = "/edit_item/{{this_item.id}}">{{this_item.name}}</a>
+                {% endfor %}
+            </div>
         {% endfor %}
         </div>
         <div class="add-custom-item">
