@@ -53,11 +53,11 @@ class List:
     @classmethod
     def get_by_id(cls, data):
         # query with join to get all the items associated with this list
-        query = "SELECT * FROM lists LEFT JOIN items ON items.lists_id = lists.id LEFT JOIN categories ON items.categories_id = categories.id where lists.id= 7 ORDER BY categories.name ASC;"
+        query = "SELECT * FROM lists LEFT JOIN items ON items.lists_id = lists.id LEFT JOIN categories ON items.categories_id = categories.id where lists.id= %(id)s ORDER BY categories.name ASC;"
         results = connectToMySQL('camping_list_schema').query_db(query, data)
         # create class instance of List
         list = cls(results[0])
-        items = {'eating/drinking': [], 'fire' : [], 'kids' : [], 'miscellaneous': [], 'personal_care' : [], 'pets' : [], 'recreation': [], 'sleeping' : [], 'tools' : []}
+        items = {'eating/drinking': [], 'fire' : [], 'kids' : [], 'miscellaneous': [], 'personal care' : [], 'pets' : [], 'recreation': [], 'sleeping' : [], 'tools' : []}
         for result in results:
             item_data = { 
                 'id': result['items.id'],
