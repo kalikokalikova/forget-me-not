@@ -5,6 +5,7 @@
 
 
 body {
+    /* display: block; */
     background-image: url("background.jpg");
     background-size:cover;
     height: 100vh;
@@ -51,9 +52,24 @@ body {
     padding: 20px;
 }
 
+
+.add-custom-item {
+    margin-top: 15px;
+}
 .trips li {
     list-style: none;
     font-size: larger;
     text-align: center;
     padding: 5px;
+    margin: 15px;
+}
+
+
+.trip-link {
+    font-size: larger;
+    font-style:normal;
+}
+
+.item-actions {
+    display: flex;
 }
