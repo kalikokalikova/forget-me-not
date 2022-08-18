@@ -77,8 +77,19 @@ class List:
             return list # Return a List instance with array of items attached
 
     @classmethod
-    def update_list(cls, danta):
-        pass
+    def update_list(cls, data):
+        print(data)
+
+        list_query = "update lists set name=%(name)s, notes=%(notes)s, start_date=%(start_date)s, end_date=%(end_date)s, zip_code=%(zip_code)s where id=%(list_id)s;"
+        result = connectToMySQL('camping_list_schema').query_db(list_query, data)
+
+        for item in data['items']:
+            if item[1] == "1":
+                Item.associate_item_with_list( { 'list_id': data['list_id'], 'item_id': item[0] })
+            else:
+                Item.delete( { 'id': item[0] } )
+
+        return result
 
     @staticmethod
     def validate_inputs(data):

@@ -122,15 +122,16 @@ class Item:
         result = connectToMySQL('camping_list_schema').query_db(query, data)
         return result
 
-    # This method does not save any items to the database
-    # It adds the new list id to each item (creates association) and returns that list to the edit list route so the user can check or uncheck default items.
+
     @classmethod
     def create_default_items(cls, list_id):
-        default_items_for_new_list = []
+        item_ids = []
         for default_item in cls.DEFAULT_ITEMS:
             default_item['lists_id'] = list_id
-            default_items_for_new_list.append(default_item)
-        return default_items_for_new_list
+            item_id = Item.save(default_item)
+            item_ids.append(item_id)
+        #TODO there should be some kind of database exception checking here, return true or false. For now, just returning list of ids because that might be useful?
+        return item_ids
 
     @classmethod
     def get_item_by_id(cls, data):
@@ -143,4 +144,14 @@ class Item:
     @classmethod
     def edit_item_in_db(cls, data):
         query = "UPDATE items SET name = %(name)s, weight = %(weight)s, is_packed = %(is_packed)s, categories_id = %(categories_id)s WHERE items.id = %(items_id)s;"
+        return connectToMySQL('camping_list_schema').query_db(query, data)
+
+    @classmethod
+    def associate_item_with_list(cls, data):
+        query = "update items set lists_id = %(list_id)s where id = %(item_id)s;"
+        return connectToMySQL('camping_list_schema').query_db(query, data)
+
+    @classmethod
+    def delete(cls, data):
+        query = "delete from items where id=%(id)s;"
         return connectToMySQL('camping_list_schema').query_db(query, data)
