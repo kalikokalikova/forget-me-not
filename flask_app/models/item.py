@@ -39,29 +39,29 @@ class Item:
         { 'name': 'fire starter', 'weight': 0.1, 'is_packed': 0, 'categories_id': 5 },
         { 'name': 'wood', 'weight': 15.0, 'is_packed': 0, 'categories_id': 5 },
         { 'name': 'kindling', 'weight': 3.0, 'is_packed': 0, 'categories_id': 5 },
-        { 'name': 'first aid kit', 'weight': 0.2, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'bear spray', 'weight': 0.5, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'sunscreen', 'weight': 0.5, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'citronella candle', 'weight': 1.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'shampoo/conditioner', 'weight': 0.5, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'hairbrush', 'weight': 0.5, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'toothbrush', 'weight': 0.1, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'toothpaste', 'weight': 0.1, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'soap', 'weight': 0.1, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'towel', 'weight': 1.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'hair dryer', 'weight': 3.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'sunglasses', 'weight': 0.5, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'hat', 'weight': 0.1, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'jacket', 'weight': 2.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'clothes', 'weight': 5.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'clothesline', 'weight': 0.1, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'broom and dustpan', 'weight': 1.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'toilet paper', 'weight': 1.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'prescription meds', 'weight': 0.2, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'chapstick', 'weight': 0.01, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'santitation trowel', 'weight': 1.5, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'baby wipes', 'weight': 0.2, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'quarters for shower', 'weight': 0.2, 'is_packed': 0, 'categories_id': 2 },
+        { 'name': 'first aid kit', 'weight': 0.2, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'bear spray', 'weight': 0.5, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'sunscreen', 'weight': 0.5, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'citronella candle', 'weight': 1.0, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'shampoo/conditioner', 'weight': 0.5, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'hairbrush', 'weight': 0.5, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'toothbrush', 'weight': 0.1, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'toothpaste', 'weight': 0.1, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'soap', 'weight': 0.1, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'towel', 'weight': 1.0, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'hair dryer', 'weight': 3.0, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'sunglasses', 'weight': 0.5, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'hat', 'weight': 0.1, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'jacket', 'weight':3.0, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'clothes', 'weight': 5.0, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'clothesline', 'weight': 0.1, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'broom and dustpan', 'weight': 1.0, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'toilet paper', 'weight': 1.0, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'prescription meds', 'weight': 0.2, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'chapstick', 'weight': 0.01, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'santitation trowel', 'weight': 1.5, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'baby wipes', 'weight': 0.2, 'is_packed': 0, 'categories_id':3 },
+        { 'name': 'quarters for shower', 'weight': 0.2, 'is_packed': 0, 'categories_id':3 },
         { 'name': 'swimming suit', 'weight': 0.1, 'is_packed': 0, 'categories_id': 6 },
         { 'name': 'bike', 'weight': 18.0, 'is_packed': 0, 'categories_id': 6 },
         { 'name': 'helmet', 'weight': 1.0, 'is_packed': 0, 'categories_id': 6 },
@@ -121,6 +121,17 @@ class Item:
         query = "select * where lists_id = %(lists_id)s;"
         result = connectToMySQL('camping_list_schema').query_db(query, data)
         return result
+    
+    # @classmethod
+    # def get_all_items_with_categories(cls, data):
+    #     query = "SELECT * FROM items LEFT JOIN categories ON items.categories_id = categories.id WHERE lists_id = %(lists_id)s ORDER BY categories.name ASC;"
+    #     results = connectToMySQL('camping_list_schema').query_db(query, data)
+    #     item_list = []
+    #     for this_item_dictionary in results:
+    #         this_item_object = cls(this_item_dictionary)
+    #         this_item_object.category_name = this_item_dictionary["categories.name"]
+    #         item_list.append(this_item_object)
+    #     return item_list
 
     @classmethod
     def create_default_items(cls, list_id):

@@ -45,7 +45,7 @@
 
         <div class="items-in-list">
         {% for item in trip.items %}
-                <a href = "/edit_item/{{item.id}}">{{item.name}}</a>
+                <a href = "/edit_item/{{item.id}}">{{item.name}}{{item.category_name}}</a>
         {% endfor %}
         </div>
         <div class="add-custom-item">
