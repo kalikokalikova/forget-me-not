@@ -122,6 +122,7 @@ class Item:
         result = connectToMySQL('camping_list_schema').query_db(query, data)
         return result
 
+
     @classmethod
     def create_default_items(cls, list_id):
         item_ids = []
@@ -148,4 +149,9 @@ class Item:
     @classmethod
     def delete_item(cls, data):
         query = "DELETE FROM items WHERE id = %(items_id)s;"
+        return connectToMySQL('camping_list_schema').query_db(query, data)
+
+    @classmethod
+    def associate_item_with_list(cls, data):
+        query = "update items set lists_id = %(list_id)s where id = %(item_id)s;"
         return connectToMySQL('camping_list_schema').query_db(query, data)

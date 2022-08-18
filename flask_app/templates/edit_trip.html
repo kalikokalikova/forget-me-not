@@ -25,27 +25,34 @@
                 <li class="nav-item m-2"><a class="nav-link active" href="/logout">Logout</a></li>
             </ul>
         </div>
-        <div class="sub-header">
-            <p>Trip Name: {{ trip.name }}</p>
-            <p>Notes: {{ trip.notes }} </p>
-            <p>Dates: {{ trip.start_date.strftime("%m/%d/%Y") }} - {{ trip.end_date.strftime("%m/%d/%Y") }}</p>
-            <p>Zip Code: {{ trip.zip_code }}</p>
-        </div>
         
-        <div>
-            <form action="/update_list" method="post">
-                <input type="hidden" name="list_id" value="{{ trip.id }}">
-        
-                {% for item in trip.items %}        
-                    <div class="items-in-list">
-                        <label>{{ item.name }}</label>
-                        <input type="checkbox" name="{{item.name}}" checked="true">
+        <form action="/update_list" method="post">
+            <input type="hidden" name="list_id" value="{{ trip.id }}">
+
+            <div class="sub-header">
+                <p>Trip Name: <input type="text" name="name" value="{{ trip.name }}"></p>
+                <p>Notes: <textarea name="notes" cols="30" rows="10">{{ trip.notes }}</textarea></p>
+                <p>
+                    Start date: <input type="date" name="start_date" value="{{trip.start_date.strftime('%Y-%m-%d')}}">
+                    End date: <input type="date" name="end_date" value="{{trip.end_date.strftime('%Y-%m-%d')}}">
+                </p>
+                <p>Zip Code: <input type="text" name="zip_code" value="{{ trip.zip_code }}"></p>
+            </div>
+            <div class="items-in-list">
+                {% for this_key in trip.items %}
+                    <div style = "border: 2px solid black; margin: 3px;">
+                        <h3>{{this_key}}</h3>
+                        {% for this_item in trip.items[this_key]%}
+                            <label>{{ this_item.name }}</label>
+                            <input type="hidden" name="{{this_item.id}}" value="1" for="item">
+                            <input type="checkbox" checked="true" onclick="this.previousElementSibling.value=1-this.previousElementSibling.value">
+                        {% endfor %}
                     </div>
                 {% endfor %}
-                
-                <button class="btn btn-primary">Confirm Items</button>
-            </form>
-        </div>
+            </div>
+            
+            <button>Looks great, save this list</button>
+        </form>
     </div>
 
 </body>
