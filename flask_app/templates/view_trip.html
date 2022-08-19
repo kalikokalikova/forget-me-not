@@ -36,57 +36,59 @@
                 </li>
             </ul>
         </div>
-        <div class="sub-header">
-            <p>Trip Name: {{ trip.name }}</p>
-            <p>Notes: {{ trip.notes }} </p>
-            <p>Dates: {{ trip.start_date.strftime("%m/%d/%Y") }} - {{ trip.end_date.strftime("%m/%d/%Y") }}</p>
-            <p>Zip Code: {{ trip.zip_code }}</p>
+        <div class="trip-sub-header">
+            <div class="trip-deets">
+                <p>Trip Name: {{ trip.name }}</p>
+                <p>Notes: {{ trip.notes }} </p>
+                <p>Dates: {{ trip.start_date.strftime("%m/%d/%Y") }} - {{ trip.end_date.strftime("%m/%d/%Y") }}</p>
+                <p>Zip Code of Camping Location: {{ trip.zip_code }}</p>
+            </div>
+            <div class="add-custom-item">
+                <h5>Add Custom Item</h5>
+                <form class="d-grid" action="/add_item" method="post">
+                    <input type="hidden" name="lists_id" value="{{ trip.id }}">
+                    <div>
+                        <label class="form-label" for="name">Item Name:</label>
+                        <input class="form-control form-control-sm" type="text" name="name">
+                    </div>
+                    <div>
+                        <label class="form-label" for="name">Category:</label>
+                        <select class="form-select form-select-sm" name="categories_id">
+                            <option value="1">Miscellaneous</option>
+                            <option value="2">Sleeping</option>
+                            <option value="3">Personal Care</option>
+                            <option value="4">Tools</option>
+                            <option value="5">Fire</option>
+                            <option value="6">Recreation</option>
+                            <option value="7">Eating/Drinking</option>
+                            <option value="8">Kids</option>
+                            <option value="9">Pets</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="name">Weight:</label>
+                        <input class="form-control form-control-sm" type="text" name="weight">
+                    </div>
+                    <div class="y-n-btn">
+                        <p>Item packed?</p>
+                        <input class="form-check-input" type="radio" id="packed" name="is_packed" value="1">
+                        <label class="form-label" for="packed">Yes</label><br>
+                        <input class="form-check-input" type="radio" id="not_packed" name="is_packed" value="0">
+                        <label class="form-label" for="not_packed">No</label><br>
+                    </div>
+                    <button class="btn btn-primary btn-block">Add</button>
+                </form>
+            </div>
         </div>
         <div class="items-in-list">
         {% for this_key in trip.items %}
-            <div style = "border: 2px solid black; margin: 3px;">
-                <h3>{{this_key}}</h3>
+            <div class="container p-2 m-2 bg dark">
+                <h3>{{this_key}}:</h3>
                 {% for this_item in trip.items[this_key]%}
                     <a href = "/edit_item/{{this_item.id}}">{{this_item.name}}</a>
                 {% endfor %}
             </div>
         {% endfor %}
-        </div>
-        <div class="add-custom-item">
-            <h5>Add Custom Item</h5>
-            <form action="/add_item" method="post">
-                <input type="hidden" name="lists_id" value="{{ trip.id }}">
-                <div>
-                    <label class="form-label" for="name">Item Name:</label>
-                    <input class="form-control" type="text" name="name">
-                </div>
-                <div>
-                    <label class="form-label" for="name">Category:</label>
-                    <select class="form-control" name="categories_id">
-                        <option value="1">Miscellaneous</option>
-                        <option value="2">Sleeping</option>
-                        <option value="3">Personal Care</option>
-                        <option value="4">Tools</option>
-                        <option value="5">Fire</option>
-                        <option value="6">Recreation</option>
-                        <option value="7">Eating/Drinking</option>
-                        <option value="8">Kids</option>
-                        <option value="9">Pets</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="form-label" for="name">Weight:</label>
-                    <input class="form-control" type="text" name="weight">
-                </div>
-                <div>
-                    <p>Item packed?</p>
-                    <input class="form-control" type="radio" id="packed" name="is_packed" value="1">
-                    <label class="form-label" for="packed">Yes</label><br>
-                    <input class="form-control" type="radio" id="not_packed" name="is_packed" value="0">
-                    <label class="form-label" for="not_packed">No</label><br>
-                </div>
-                <button class="btn btn-primary">Add</button>
-            </form>
         </div>
     </div>
     

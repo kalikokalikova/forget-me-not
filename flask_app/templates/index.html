@@ -16,48 +16,52 @@
 </head>
 <body>
     <div class="container p-2">
-        <div class="left">
-            <div class="header">
-                <h1>Home Page</h1>
-                <ul class="nav nav-pills">
-                    <li class="nav-item m-2"><a class="nav-link active" href="/trips">See All Trips</a></li>
-                    <li class="nav-item m-2"><a class="nav-link active" href="/logout">Logout</a></li>
-                </ul>
-            </div>
-            <div class="new-list-form">
-                <form action="/save-list" method="post">
-                    <label class="form-label" for="name">Trip name:</label>
-                <input class="form-control" type="text" name="name">
-                
-                <label class="form-label" for="notes">Notes:</label>
-                <input class="form-control" type="text" name="notes" id="">
-                
-                <label class="form-label" for="start-date">Start Date:</label>
-                <input class="form-control" type="date" name="start_date">
-                
-                <label class="form-label" for="end-date">End Date:</label>
-                <input class="form-control" type="date" name="end_date">
-                
-                <label class="form-label" for="zip-code">Zip code of camping location</label>
-                <input class="form-control" type="text" name="zip_code">
-                
-                <button class="btn btn-primary mt-3">Save Trip</button>
-                </form>
-            </div>
-        </div>
-    <div class="right">
-        <h1 class="header">Upcoming Trips</h1>
-        <ul class="trips">
-            {% for trip in upcoming_trips %}
-            <li>
-                <a class="trip-link" href="/view_trip/{{trip.id}}">{{trip.name}}</a>
-                <div class="trip-actions">
-                    <a class="btn btn-primary btn-sm" href="/edit_trip/<id>">Edit Trip</a>
-                    <a class="btn btn-primary btn-sm" href="/delete_trip/{{trip.id}}">Delete Trip</a>
+        <div class="side-by-side">
+            <div class="left">
+                <div class="header">
+                    <h1>Home Page</h1>
+                    <ul class="nav nav-pills">
+                        <li class="nav-item m-2"><a class="nav-link active" href="/trips">See All Trips</a></li>
+                        <li class="nav-item m-2"><a class="nav-link active" href="/logout">Logout</a></li>
+                    </ul>
                 </div>
-            </li>
-            {% endfor %}
-        </ul>
+                <div class="new-list-form">
+                    <form class="d-grid" action="/save-list" method="post">
+                        <label class="form-label" for="name">Trip Name:</label>
+                    <input class="form-control" type="text" name="name">
+                    
+                    <label class="form-label" for="notes">Notes:</label>
+                    <input class="form-control" type="text" name="notes" id="">
+                    
+                    <label class="form-label" for="start-date">Start Date:</label>
+                    <input class="form-control" type="date" name="start_date">
+                    
+                    <label class="form-label" for="end-date">End Date:</label>
+                    <input class="form-control" type="date" name="end_date">
+                    
+                    <label class="form-label" for="zip-code">Zip Code of Camping Location:</label>
+                    <input class="form-control" type="text" name="zip_code">
+                    
+                    <button class="btn btn-primary btn-block mt-3">Save Trip</button>
+                    </form>
+                </div>
+            </div>
+        <div class="right">
+            <h1 class="header">Upcoming Trips</h1>
+            <ul class="trips">
+                {% for trip in upcoming_trips %}
+                <div class="container p-2">
+                    <li>
+                        <a class="trip-link" href="/view_trip/{{trip.id}}">{{trip.name}}</a>
+                        <div class="trip-actions">
+                            <a class="btn btn-primary btn-sm" href="/edit_trip/{{trip.id}}">Edit Trip</a>
+                            <a class="btn btn-primary btn-sm" href="/delete_trip/{{trip.id}}">Delete Trip</a>
+                        </div>
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </body>
 </html>

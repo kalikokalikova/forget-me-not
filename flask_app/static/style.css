@@ -22,8 +22,14 @@ body {
     background-color: rgb(179, 179, 179, 0.80);
 }
 
+.side-by-side {
+    display: flex;
+}
+
 .reg-header {
     display: block;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .header {
@@ -32,6 +38,7 @@ body {
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 
@@ -53,9 +60,6 @@ body {
 }
 
 
-.add-custom-item {
-    margin-top: 15px;
-}
 .trips li {
     list-style: none;
     font-size: larger;
@@ -71,5 +75,20 @@ body {
 }
 
 .item-actions {
+    display: flex;
+}
+
+.trip-sub-header {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    /* margin: 0; */
+}
+
+.y-n-btn {
+    display: flex;
+}
+
+.items-in-list {
     display: flex;
 }
