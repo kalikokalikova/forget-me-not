@@ -1,4 +1,5 @@
 from config.mysqlconnection import connectToMySQL
+from flask import flash
 
 class Item:
     def __init__(self, data):
@@ -105,3 +106,14 @@ class Item:
     def associate_item_with_list(cls, data):
         query = "update items set lists_id = %(list_id)s where id = %(item_id)s;"
         return connectToMySQL('camping_list_schema').query_db(query, data)
+
+    @staticmethod
+    def validate_item_inputs(data):
+        is_valid = True
+        if len(data['name']) < 2:
+            is_valid = False
+            flash("Item name must be two or more characters.")
+        if len(data['weight']) < 1:
+            is_valid = False
+            flash("Item must have a weight")
+        return is_valid
