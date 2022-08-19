@@ -86,8 +86,12 @@ def update_list():
 def view_trip(id):
     if "user_id" not in session: 
         return redirect ("/register_or_login")
-    trip = List.get_by_id({ 'id': id })
-    return render_template('view_trip.html', trip=trip)
+    data = {
+        'id': id
+    }
+    trip = List.get_by_id(data)
+    total_weight = List.total_item_weight(data)
+    return render_template('view_trip.html', trip=trip, total_weight=total_weight)
 
 @app.route('/delete_trip/<int:id>')
 def delete_trip(id):

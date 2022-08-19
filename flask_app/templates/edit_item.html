@@ -47,17 +47,24 @@
                 </select>
             </div>
             <div>
-                <label class="form-label" for="weight">Weight:</label>
+                <label class="form-label" for="weight">Weight (lbs):</label>
                 <input class="form-control" type="text" name="weight" value = "{{item.weight}}">
             </div>
             <div class="y-n-btn">
                 <p>Item packed?</p>
-                    <input class="form-check-input" type="radio" id="packed" name="is_packed" value="1">
+                    <input class="form-check-input" type="radio" id="packed" name="is_packed" value="1" {% if item.is_packed == 1%} checked {%endif%}>
                     <label class="form-label" for="packed">Yes</label><br>
-                    <input class="form-check-input" type="radio" id="not_packed" name="is_packed" value="0">
+                    <input class="form-check-input" type="radio" id="not_packed" name="is_packed" value="0" {%if item.is_packed == 0%} checked {%endif%}>
                     <label class="form-label" for="not_packed">No</label><br>
             </div>
             <button class="btn btn-primary btn-block">Update</button>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         </form>
     </div>
 </body>

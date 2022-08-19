@@ -18,12 +18,12 @@
     <div class="container p-2">
         <h1 class="reg-header">Forget-Me-Not</h1>
             {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         <div class="main-content">
             <div class="left">
                 <h3>Register</h3>

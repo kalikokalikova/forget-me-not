@@ -26,7 +26,7 @@ class List:
 
     @classmethod
     def get_upcoming_trips(cls, data):
-        query = "select * from lists where users_id = %(users_id)s and start_date > curdate();"
+        query = "select * from lists where users_id = %(users_id)s and start_date > curdate() ORDER BY start_date DESC;"
         results = connectToMySQL('camping_list_schema').query_db(query, data)
         if len(results) == 0:
             return []
@@ -107,3 +107,13 @@ class List:
     def delete_list(cls, data):
         query = "DELETE FROM lists WHERE id = %(id)s;"
         return connectToMySQL('camping_list_schema').query_db(query, data)
+
+    @classmethod
+    def total_item_weight(cls, data):
+        query = "SELECT * FROM items WHERE lists_id = %(id)s"
+        results = connectToMySQL('camping_list_schema').query_db(query, data)
+        total_weight = 0
+        for result in results:
+            this_weight = result['weight']
+            total_weight += float(this_weight)
+        return total_weight
