@@ -79,17 +79,18 @@ class List:
 
     @classmethod
     def update_list(cls, data):
-        print(data)
 
+        # update data for list
         list_query = "update lists set name=%(name)s, notes=%(notes)s, start_date=%(start_date)s, end_date=%(end_date)s, zip_code=%(zip_code)s where id=%(list_id)s;"
         result = connectToMySQL('camping_list_schema').query_db(list_query, data)
 
+        # update associations (or lack thereof) between list and its items
         for item in data['items']:
             if item[1] == "1":
                 Item.associate_item_with_list( { 'list_id': data['list_id'], 'item_id': item[0] })
             else:
                 Item.delete_item( { 'items_id': item[0] } )
-
+        # return None
         return result
 
     @staticmethod
@@ -117,3 +118,20 @@ class List:
             this_weight = result['weight']
             total_weight += float(this_weight)
         return total_weight
+
+    @staticmethod
+    def separate_list_data_from_item_data(form_data):
+        data = { # Popping these values out of the data so all that's left is the items to be updated
+            'list_id': form_data.pop('list_id'),
+            'name': form_data.pop('name'),
+            'notes': form_data.pop('notes'),
+            'start_date': form_data.pop('start_date'),
+            'end_date': form_data.pop('end_date'),
+            'zip_code': form_data.pop('zip_code')
+        }
+
+        items = [] # create empty array to hold the ids of items which are checked
+        for item in form_data.items(): # Looping through the values left in the data (which should only be item tuples)
+            items.append(item) # save item tuple to array
+        data['items'] = items # attach array of item_ids to data to be sent to model method
+        return data

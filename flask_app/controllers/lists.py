@@ -60,25 +60,9 @@ def edit_trip(id):
 
 @app.route('/update_list', methods=['post'])
 def update_list():
-    # create a dictionary from the form data that is mutable so I can pop out values
-    form_data = request.form.to_dict()
-
-    #It might make sense to move all this munging into the model TODO
-    data = { # Popping these values out of the data so all that's left is the items to be updated
-        'list_id': form_data.pop('list_id'),
-        'name': form_data.pop('name'),
-        'notes': form_data.pop('notes'),
-        'start_date': form_data.pop('start_date'),
-        'end_date': form_data.pop('end_date'),
-        'zip_code': form_data.pop('zip_code')
-    }
-
-    items = [] # create empty array to hold the ids of items which are checked
-    for item in form_data.items(): # Looping through the values left in the data (which should only be item tuples)
-        items.append(item) # save item tuple to array
-
-    data['items'] = items # attach array of item_ids to data to be sent to model method
-    list_id = List.update_list(data)
+    # passing in a dictionary from the form data that is mutable so I can pop out values
+    data = List.separate_list_data_from_item_data(request.form.to_dict())
+    List.update_list(data)
 
     return redirect(f'/view_trip/{request.form["list_id"]}')
 
