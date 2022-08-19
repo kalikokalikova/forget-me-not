@@ -2,6 +2,8 @@ from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models.list import List
 from flask_app.models.item import Item
+import requests
+import os
 
 
 @app.route('/')
@@ -96,3 +98,10 @@ def delete_trip(id):
     }
     List.delete_list(data)
     return redirect("/trips")
+
+@app.route("/weather/<int:list_id>/<int:zip_code>")
+def show_weather_report(list_id, zip_code):
+    r = requests.get(f"http://api.openweathermap.org/data/2.5/forecast?zip={zip_code},us&appid={os.environ.get('WEATHER_API_KEY')}&units=imperial")
+    trip = List.get_by_id({ 'id': list_id })
+    print(r.json())
+    return render_template("weather.html", forecast = r.json(), trip=trip)

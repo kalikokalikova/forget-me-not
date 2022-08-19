@@ -80,6 +80,9 @@
                 </form>
             </div>
         </div>
+        <div id = "get_forecast">
+            <a href = "/weather/{{trip.id}}/{{trip.zip_code}}">Get weather forecast</a>
+        </div>
         <div class="items-in-list">
         {% for this_key in trip.items %}
             <div class="container p-2 m-2 bg dark">

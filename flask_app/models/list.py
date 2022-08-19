@@ -88,7 +88,7 @@ class List:
             if item[1] == "1":
                 Item.associate_item_with_list( { 'list_id': data['list_id'], 'item_id': item[0] })
             else:
-                Item.delete( { 'id': item[0] } )
+                Item.delete_item( { 'id': item[0] } )
 
         return result
 
