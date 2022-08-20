@@ -89,7 +89,7 @@ def delete_trip(id):
 
 @app.route("/weather/<int:list_id>/<int:zip_code>")
 def show_weather_report(list_id, zip_code):
-    r = requests.get(f"http://api.openweathermap.org/data/2.5/forecast?zip={zip_code},us&appid={os.environ.get('WEATHER_API_KEY')}&units=imperial")
+    r = requests.get(f"http://api.openweathermap.org/data/2.5/weather?zip={zip_code},us&appid={os.environ.get('WEATHER_API_KEY')}&units=imperial")
     trip = List.get_by_id({ 'id': list_id })
     print(r.json())
-    return render_template("weather.html", forecast = r.json(), trip=trip)
+    return render_template("weather.html", weather = r.json(), trip=trip)
