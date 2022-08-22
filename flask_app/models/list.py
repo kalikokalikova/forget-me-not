@@ -55,6 +55,8 @@ class List:
         # query with join to get all the items associated with this list
         query = "SELECT * FROM lists LEFT JOIN items ON items.lists_id = lists.id LEFT JOIN categories ON items.categories_id = categories.id where lists.id= %(id)s ORDER BY categories.name ASC;"
         results = connectToMySQL('camping_list_schema').query_db(query, data)
+        if len(results) == 0:
+            return False
         # create class instance of List
         list = cls(results[0])
         items = {'eating/drinking': [], 'fire' : [], 'kids' : [], 'miscellaneous': [], 'personal care' : [], 'pets' : [], 'recreation': [], 'sleeping' : [], 'tools' : []}
@@ -117,7 +119,7 @@ class List:
         for result in results:
             this_weight = result['weight']
             total_weight += float(this_weight)
-        return total_weight
+        return round(total_weight,2)
 
     @staticmethod
     def separate_list_data_from_item_data(form_data):

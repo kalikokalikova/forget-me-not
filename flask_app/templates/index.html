@@ -49,19 +49,51 @@
         <div class="right">
             <h1 class="header">Upcoming Trips</h1>
             <ul class="trips">
-                {% for trip in upcoming_trips %}
-                <div class="container p-2">
-                    <li>
-                        <a class="trip-link" href="/view_trip/{{trip.id}}">{{trip.name}}</a>
-                        <div class="trip-actions">
-                            <a class="btn btn-primary btn-sm" href="/edit_trip/{{trip.id}}">Edit Trip</a>
-                            <a class="btn btn-primary btn-sm" href="/delete_trip/{{trip.id}}">Delete Trip</a>
-                        </div>
-                    </li>
-                </div>
-                {% endfor %}
+                {% if upcoming_trips == []%}
+                <p>There are no upcoming trips to display.</p>
+                {% else %}
+                    {% for trip in upcoming_trips %}
+                    <div class="container p-2">
+                        <li>
+                            <a class="trip-link" href="/view_trip/{{trip.id}}">{{trip.name}}</a>
+                            <div class="trip-actions">
+                                <a class="btn btn-primary btn-sm" href="/edit_trip/{{trip.id}}">Edit Trip</a>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal3" value = {{trip.id}} onclick = 'get_trip_id(this)'>Delete Trip</button>
+                            </div>
+                        </li>
+                    </div>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </div>
     </div>
+    <div class="modal fade" id="myModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmation needed!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                Are you sure you want to delete this trip?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <a id = "yes-button" class="btn btn-primary" href = "#">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style = "color: red;">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
