@@ -117,7 +117,7 @@ class List:
         for result in results:
             this_weight = result['weight']
             total_weight += float(this_weight)
-        return total_weight
+        return round(total_weight,2)
 
     @staticmethod
     def separate_list_data_from_item_data(form_data):
