@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, request, session
+from flask import render_template, redirect, request, session, flash
 from flask_app.models.list import List
 from flask_app.models.item import Item
 import requests
@@ -41,6 +41,7 @@ def show_all_trip():
     if lists:
         return render_template('all_trips.html', all_trips=lists)
     else:
+        flash("You have no saved trips to show.")
         return redirect('/')
 
 @app.route('/edit_trip/<id>')
@@ -48,11 +49,9 @@ def edit_trip(id):
     if "user_id" not in session: 
         return redirect ("/register_or_login")
     trip = List.get_by_id({'id': id})
-    
-
-    
     if not trip: # if trip doesn't exist, db error, etc
-        return redirect('/') # redirect to home with TODO error messaging
+        flash("Trip does not exist.")
+        return redirect('/')
     if len(trip.items) == 0: # if trip has no items
         trip.items = Item.create_default_items( {'list_id': trip.id} )
     # if neither of these other two things is the case: trip has items associated in database
