@@ -14,7 +14,14 @@ body {
 
 
 .container {
-    /* width: 1200px; */
+    max-width: 1420px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: rgb(179, 179, 179, 0.80);
+    margin-top: 20px;
+}
+.category-card {
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -91,4 +98,12 @@ body {
 
 .items-in-list {
     display: flex;
+}
+
+.packed {
+    background-color: #4a9b4ab0;
+    width: 100%;
+    border-radius: 9px;
+    text-align: center;
+    color: white;
 }
