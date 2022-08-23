@@ -26,24 +26,23 @@
                     <a class="nav-link active" href="/trips">See All Trips</a>
                 </li>
                 <li class="nav-item m-2">
-                    <a class="nav-link active" href="/edit_trip/{{trip.id}}">Edit Trip</a>
-                </li>
-                <li class="nav-item m-2">
-                    <button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">Delete Trip</a>
-                </li>
-                <li class="nav-item m-2">
                     <a class="nav-link active" href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
         <div class="trip-sub-header">
-            <div class="trip-deets">
+            <div class="p-3 m-3">
                 <p>Trip Name: {{ trip.name }}</p>
                 <p>Notes: {{ trip.notes }} </p>
                 <p>Dates: {{ trip.start_date.strftime("%m/%d/%Y") }} - {{ trip.end_date.strftime("%m/%d/%Y") }}</p>
                 <p>Zip Code of Camping Location: {{ trip.zip_code }}</p>
+                <div>
+                    <a class = "btn btn-primary" href="/edit_trip/{{trip.id}}">Edit Trip</a>
+                    <button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">Delete Trip</a>
+                </div>
             </div>
-            <div class="add-custom-item">
+            
+            <div class="p-3 m-3">
                 <h5>Add Custom Item</h5>
                 <form class="d-grid" action="/add_item" method="post">
                     <input type="hidden" name="lists_id" value="{{ trip.id }}">
