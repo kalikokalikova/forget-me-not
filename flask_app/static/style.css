@@ -111,4 +111,11 @@ body {
     border-radius: 9px;
     text-align: center;
     color: white;
+    text-decoration: none;
+}
+
+#check-uncheck {
+    /* is this the best way to deal with this crazy button? I don't know */
+    margin: auto;
+    width: 175px;
 }
