@@ -15,15 +15,21 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <ul class="nav nav-pills">
-            <li class="nav-item m-2">
-                <a class="nav-link active" href="/view_trip/{{trip.id}}">Back to Trip</a>
-            </li>
-        </ul>
-    </div>
-    <div class="weather-container">
-        <h1>{{trip.name}}</h1>
+    <div class="container p-2">
+        <div class="header">
+            <h1>Weather in {{trip.name}}</h1>
+            <ul class="nav nav-pills">
+                <li class="nav-item m-2">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item m-2">
+                    <a class="nav-link active" href="/trips">See All Trips</a></li>
+                <li class="nav-item m-2">
+                    <a class="nav-link active" href="/view_trip/{{trip.id}}">Back to Trip</a>
+                </li>
+                <li class="nav-item m-2"><a class="nav-link active" href="/logout">Logout</a></li>
+            </ul>
+        </div>
         <h5>Today's weather in {{trip.zip_code}}</h5>
         <h3>Current Conditions: {{weather.weather[0].description}}</h3>
         <h3>Current Temp: <span id = "curr-temp">{{weather.main.temp}}°F</span></h3>

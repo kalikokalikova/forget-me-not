@@ -72,12 +72,18 @@ body {
 }
 
 
+.trips {
+    padding: 0px;
+}
+
 .trips li {
     list-style: none;
     font-size: larger;
     text-align: center;
-    padding: 5px;
+    padding: 15px;
     margin: 15px;
+    background-color: rgb(179, 179, 179, 0.80);
+    border-radius: 15px;
 }
 
 
@@ -106,7 +112,7 @@ body {
 }
 
 .packed {
-    background-color: #4a9b4ab0;
+    background-color: #86cf86b0;
     width: 100%;
     border-radius: 9px;
     text-align: center;
@@ -118,4 +124,8 @@ body {
     /* is this the best way to deal with this crazy button? I don't know */
     margin: auto;
     width: 175px;
+}
+
+#get_forecast a {
+    align-items: center;
 }

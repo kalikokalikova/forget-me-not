@@ -40,6 +40,9 @@
                     <a class = "btn btn-primary" href="/edit_trip/{{trip.id}}">Edit Trip</a>
                     <button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">Delete Trip</a>
                 </div>
+                <div id = "get_forecast">
+                    <a href = "/weather/{{trip.id}}/{{trip.zip_code}}">Get weather forecast</a>
+                </div>
             </div>
             
             <div class="p-3 m-3">
@@ -85,9 +88,6 @@
                     {% endwith %}
                 </form>
             </div>
-        </div>
-        <div id = "get_forecast">
-            <a href = "/weather/{{trip.id}}/{{trip.zip_code}}">Get weather forecast</a>
         </div>
         <div>
             <h4>Total item weight: {{total_weight}} pounds</h4>
