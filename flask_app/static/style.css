@@ -12,9 +12,21 @@ body {
     /* background-position: center; */
 }
 
-
 .container {
-    /* width: 1200px; */
+    max-width: 1420px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: rgb(179, 179, 179, 0.80);
+    margin-top: 20px;
+}
+.weather-container {
+    background-color: rgb(179, 179, 179, 0.80);
+    width: 50%;
+    padding: 20px;
+    border-radius: 15px;
+}
+.category-card {
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -60,12 +72,18 @@ body {
 }
 
 
+.trips {
+    padding: 0px;
+}
+
 .trips li {
     list-style: none;
     font-size: larger;
     text-align: center;
-    padding: 5px;
+    padding: 15px;
     margin: 15px;
+    background-color: rgb(179, 179, 179, 0.80);
+    border-radius: 15px;
 }
 
 
@@ -91,4 +109,23 @@ body {
 
 .items-in-list {
     display: flex;
+}
+
+.packed {
+    background-color: #86cf86b0;
+    width: 100%;
+    border-radius: 9px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+#check-uncheck {
+    /* is this the best way to deal with this crazy button? I don't know */
+    margin: auto;
+    width: 175px;
+}
+
+#get_forecast a {
+    align-items: center;
 }
