@@ -115,9 +115,21 @@ body {
     background-color: #86cf86b0;
     width: 100%;
     border-radius: 9px;
-    text-align: center;
     color: white;
     text-decoration: none;
+}
+.selected-for-pack {
+    background-color:khaki;
+    width: 100%;
+    border-radius: 9px;
+    color: white;
+    text-decoration: none;
+}
+.not-packed {
+    width: 100%;
+    border-radius: 9px;
+    text-decoration: none;
+    border: 2px solid black;
 }
 
 #check-uncheck {

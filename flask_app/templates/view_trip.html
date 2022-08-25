@@ -40,6 +40,9 @@
                     <a class = "btn btn-primary" href="/edit_trip/{{trip.id}}">Edit Trip</a>
                     <button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">Delete Trip</a>
                 </div>
+                <div>
+                    <a class = "btn btn-info" href = "/packed_list/{{trip.id}}">Go to Packing Tracker</a>
+                </div>
                 <div id = "get_forecast">
                     <a href = "/weather/{{trip.id}}/{{trip.zip_code}}">Get weather forecast</a>
                 </div>

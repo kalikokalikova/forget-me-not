@@ -93,3 +93,32 @@ def show_weather_report(list_id, zip_code):
     trip = List.get_by_id({ 'id': list_id })
     print(r.json())
     return render_template("weather.html", weather = r.json(), trip=trip)
+
+@app.route("/packed_list/<int:id>")
+def packed_list(id):
+    data = {
+        "id" : id
+    }
+    trip = List.get_by_id(data)
+    return render_template("packed_list.html", trip = trip)
+
+@app.route("/save_packed", methods = ["POST"])
+def save_packed():
+    packed_items_list_string = request.form['packed_items_list']
+    packed_items_list = packed_items_list_string.split(",")
+    for i in range (0,len(packed_items_list)):
+        data = {
+            "item_id" : packed_items_list[i]
+        }
+        List.save_packed(data)
+    list_id = request.form['list_id']
+    return redirect(f"/packed_list/{list_id}")
+
+@app.route("/unpack_all", methods = ["POST"])
+def unpack_all():
+    data = {
+        "id" : request.form["trip_id"]
+    }
+    list_id = data['id']
+    List.unpack_all(data)
+    return redirect(f"packed_list/{list_id}")

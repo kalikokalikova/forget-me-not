@@ -137,3 +137,14 @@ class List:
             items.append(item) # save item tuple to array
         data['items'] = items # attach array of item_ids to data to be sent to model method
         return data
+
+    @classmethod
+    def save_packed(cls, data):
+        query = "UPDATE items SET is_packed = 1 WHERE id = %(item_id)s;"
+        return connectToMySQL('camping_list_schema').query_db(query, data)
+    
+    @classmethod
+    def unpack_all(cls, data):
+        query = "UPDATE items SET is_packed = 0 WHERE lists_id = %(id)s;"
+        return connectToMySQL('camping_list_schema').query_db(query, data)
+
