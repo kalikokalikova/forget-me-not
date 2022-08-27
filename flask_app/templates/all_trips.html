@@ -28,7 +28,7 @@
                 <li>
                     <a href="/view_trip/{{trip.id}}">{{trip.name}}</a>: <sp>{{trip.start_date.strftime("%m/%d/%Y")}} - {{trip.end_date.strftime("%m/%d/%Y")}}</sp>
                     <div class="trip-actions">
-                        <a class="btn btn-primary btn-sm" href="/edit_trip/{{trip.id}}">Edit Trip</a>
+                        <a class="btn btn-primary btn-sm" href="/edit_trip/{{trip.id}}/1">Edit Trip</a>
                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal" value = {{trip.id}} onclick = 'get_trip_id(this)'>Delete Trip</button>
                     </div>
                 </li>

@@ -24,10 +24,12 @@ def validate_and_save_list():
             'notes': request.form['notes'],
             'start_date': request.form['start_date'],
             'end_date': request.form['end_date'],
-            'zip_code': request.form['zip_code']
+            'zip_code': request.form['zip_code'],
+            'trip_type' : request.form['trip_type']
             }
         list_id = List.save(data)
-        return redirect(f'/edit_trip/{list_id}')
+        trip_type = data['trip_type']
+        return redirect(f'/edit_trip/{list_id}/{trip_type}')
     else:
         #get flashed messages from HTML
         return redirect('/')
@@ -44,8 +46,8 @@ def show_all_trip():
         flash("You have no saved trips to show.")
         return redirect('/')
 
-@app.route('/edit_trip/<id>')
-def edit_trip(id):
+@app.route('/edit_trip/<int:id>/<int:id2>')
+def edit_trip(id, id2):
     if "user_id" not in session: 
         return redirect ("/register_or_login")
     trip = List.get_by_id({'id': id})
@@ -53,7 +55,7 @@ def edit_trip(id):
         flash("Trip does not exist.")
         return redirect('/')
     if len(trip.items) == 0: # if trip has no items
-        trip.items = Item.create_default_items( {'list_id': trip.id} )
+        trip.items = Item.create_default_items( {'list_id': trip.id, 'trip_type' : id2} )
     # if neither of these other two things is the case: trip has items associated in database
     return render_template('edit_trip.html', trip=trip)
 

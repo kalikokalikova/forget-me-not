@@ -19,9 +19,10 @@ class List:
     def save(cls, data):
         query = "insert into lists (name, users_id, notes, start_date, end_date, zip_code) values ( %(name)s, %(users_id)s, %(notes)s, %(start_date)s, %(end_date)s, %(zip_code)s );"
         list_id = connectToMySQL('camping_list_schema').query_db(query, data)
+        trip_type = data['trip_type']
         if list_id:
             # create default items and attach to list
-            items = Item.create_default_items(list_id)
+            items = Item.create_default_items(list_id, trip_type)
         return list_id
 
     @classmethod

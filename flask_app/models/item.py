@@ -1,5 +1,6 @@
 from config.mysqlconnection import connectToMySQL
 from flask import flash
+from flask_app.models import default_items
 
 class Item:
     def __init__(self, data):
@@ -13,54 +14,10 @@ class Item:
         self.category_name = None
         self.list_id = data['lists_id']
 
-    DEFAULT_ITEMS = [
-        { 'name': 'sleeping bag', 'weight': 2.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'tent', 'weight': 3.5, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'stakes', 'weight': 1.0, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'sleeping pad', 'weight': 1.5, 'is_packed': 0, 'categories_id': 2 },
-        { 'name': 'knife', 'weight': 0.2, 'is_packed': 0, 'categories_id': 4 },
-        { 'name': 'flashlight', 'weight': 0.5, 'is_packed': 0, 'categories_id': 4 },
-        { 'name': 'lighter', 'weight': 0.2, 'is_packed': 0, 'categories_id': 5 },
-        { 'name': 'multitool', 'weight': 0.3, 'is_packed': 0, 'categories_id': 4 },
-        { 'name': 'headlamp', 'weight': 0.2, 'is_packed': 0, 'categories_id': 4 },
-        { 'name': 'first aid kit', 'weight': 0.2, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'sunscreen', 'weight': 0.5, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'towel', 'weight': 1.0, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'sunglasses', 'weight': 0.5, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'hat', 'weight': 0.1, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'jacket', 'weight':3.0, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'clothes', 'weight': 5.0, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'toilet paper', 'weight': 1.0, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'prescription meds', 'weight': 0.2, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'chapstick', 'weight': 0.01, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'santitation trowel', 'weight': 1.5, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'wood', 'weight': 15.0, 'is_packed': 0, 'categories_id': 5 },
-        { 'name': 'baby wipes', 'weight': 0.2, 'is_packed': 0, 'categories_id':3 },
-        { 'name': 'swimming suit', 'weight': 0.1, 'is_packed': 0, 'categories_id': 6 },
-        { 'name': 'hiking boots', 'weight': 2.0, 'is_packed': 0, 'categories_id': 6 },
-        { 'name': 'hiking backpack', 'weight': 2.0, 'is_packed': 0, 'categories_id': 6 },
-        { 'name': 'water bottle', 'weight': 0.5, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'camp stove', 'weight': 5.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'mess kit', 'weight': 2.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'paper towels', 'weight': 1.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'utensils', 'weight': 1.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'cups', 'weight': 1.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'bowls', 'weight': 1.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'cooler', 'weight': 5.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'pots and pans', 'weight': 5.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'stove fuel', 'weight': 5.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'hand sanitizer', 'weight': 0.1, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'cooking knife', 'weight': 0.2, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'trash bags', 'weight': 1.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'dish towel', 'weight': 0.5, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'coffee maker', 'weight': 2.0, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'food storage bags', 'weight': 0.5, 'is_packed': 0, 'categories_id': 7 },
-        { 'name': 'water bowl', 'weight': 1.0, 'is_packed': 0, 'categories_id': 9 },
-        { 'name': 'leash', 'weight': 0.2, 'is_packed': 0, 'categories_id': 9 },
-        { 'name': 'pet food', 'weight': 2.0, 'is_packed': 0, 'categories_id': 9 },
-        { 'name': 'poop bags', 'weight': 0.2, 'is_packed': 0, 'categories_id': 9 }
-    ]
-    
+    car = default_items.DEFAULT_CAR_ITEMS
+    backpacking = default_items.DEFAULT_BACKPACKING_ITEMS
+    RV = default_items.DEFAULT_RV_ITEMS
+
     @classmethod
     def save(cls, data):
         query = "insert into items (name, weight, is_packed, categories_id, lists_id) values ( %(name)s, %(weight)s, %(is_packed)s, %(categories_id)s, %(lists_id)s );"
@@ -73,11 +30,17 @@ class Item:
         result = connectToMySQL('camping_list_schema').query_db(query, data)
         return result
 
-
     @classmethod
-    def create_default_items(cls, list_id):
+    def create_default_items(cls, list_id, trip_type):
         item_ids = []
-        for default_item in cls.DEFAULT_ITEMS:
+        print(f"here is {trip_type}!!!!!!")
+        if trip_type == "1":
+            cls.default_list = cls.car
+        elif trip_type == "2":
+            cls.default_list = cls.backpacking
+        elif trip_type == "3":
+            cls.default_list = cls.RV
+        for default_item in cls.default_list:
             default_item['lists_id'] = list_id
             item_id = Item.save(default_item)
             item_ids.append(item_id)

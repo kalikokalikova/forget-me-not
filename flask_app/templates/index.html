@@ -27,8 +27,15 @@
                 </div>
                 <div class="new-list-form">
                     <form class="d-grid" action="/save-list" method="post">
-                        <label class="form-label" for="name">Trip Name:</label>
+                    <label class="form-label" for="name">Trip Name:</label>
                     <input class="form-control" type="text" name="name">
+
+                    <label class="form-label" for="trip_type">Trip Type:</label>
+                    <select class="form-select form-select-sm" name="trip_type">
+                        <option value="1">Car Camping</option>
+                        <option value="2">Backpacking</option>
+                        <option value="3">RV Camping</option>
+                    </select>
                     
                     <label class="form-label" for="notes">Notes:</label>
                     <input class="form-control" type="text" name="notes" id="">
@@ -57,7 +64,7 @@
                         <li>
                             <a class="trip-link" href="/view_trip/{{trip.id}}">{{trip.name}}</a>
                             <div class="trip-actions">
-                                <a class="btn btn-primary btn-sm" href="/edit_trip/{{trip.id}}">Edit Trip</a>
+                                <a class="btn btn-primary btn-sm" href="/edit_trip/{{trip.id}}/1">Edit Trip</a>
                                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal3" value = {{trip.id}} onclick = 'get_trip_id(this)'>Delete Trip</button>
                             </div>
                         </li>

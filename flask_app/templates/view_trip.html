@@ -37,7 +37,7 @@
                 <p>Dates: {{ trip.start_date.strftime("%m/%d/%Y") }} - {{ trip.end_date.strftime("%m/%d/%Y") }}</p>
                 <p>Zip Code of Camping Location: {{ trip.zip_code }}</p>
                 <div>
-                    <a class = "btn btn-primary" href="/edit_trip/{{trip.id}}">Edit Trip</a>
+                    <a class = "btn btn-primary" href="/edit_trip/{{trip.id}}/1">Edit Trip</a>
                     <button type = "button" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">Delete Trip</a>
                 </div>
                 <div>
